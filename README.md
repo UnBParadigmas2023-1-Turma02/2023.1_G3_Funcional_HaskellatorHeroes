@@ -1,14 +1,21 @@
 # NomeDoProjeto
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T02 <br>
-**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: XX<br>
+**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: 03<br>
 **Paradigma**: Funcional<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| 18011/9231  |  Eduardo Maia Rezende |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| Adrian Soares Lopes | 160000572 |
+| Bianca Sofia Brasil de Oliveira | 190025298 |
+| Daniel Vinicius Ribeiro Alves | 190026375 |
+| Daniela Soares de Oliveira | 180015222 |
+| Eduardo Maia Rezende | 180119231 |
+| Erick Melo Vidal de Oliveira | 190027355 |
+| João Victor Max Bisinotti de Oliveira | 170069991 |
+| Klyssmann Henrique Ferreira de Oliveira | 202028202 |
+| Vitor Eduardo Kühl Rodrigues | 190118288 |
 
 ## Sobre 
 O projeto é um jogo de adivinhação em Haskell, em que o sistema tenta adivinhar qual é o herói fictício que o jogador está pensando, fazendo perguntas de múltipla escolha e usando uma árvore binária de decisão para modelar as possíveis respostas. O objetivo do jogo é adivinhar o herói com o menor número possível de perguntas.
