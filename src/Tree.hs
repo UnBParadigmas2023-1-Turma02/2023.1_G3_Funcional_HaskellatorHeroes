@@ -60,7 +60,69 @@ tree =
         )
       )
     )
-  (Leaf (Left "Desculpe, não consegui identificar o herói que você está pensando"))
+    (Node "O herói é do gênero feminino?"
+      (Node "O herói é da raça humana?"
+        (Node "O herói é um assassino treinado?"
+          (Leaf (Right ViuvaNegra))
+          (Leaf (Right Vespa))
+        )
+        (Node "O herói é Um mutante?"
+          (Node "O herói possui poderes sobre o clima?"
+            (Leaf (Right Tempestade))
+            (Node "O herói possui poderes telecinéticos?"
+              (Leaf (Right JeanGrey))
+              (Leaf (Right JessicaJones))
+            )
+          )
+          (Leaf (Right Gamora))
+        )
+      )
+      --Não
+      (Node "O herói é da raça humana?"
+        --Sim
+        (Node "O herói é um bilionário com armadura tecnológica?"
+          (Leaf (Right HomemDeFerro))
+          (Node "O herói possui um escudo de Vibranium?"
+            (Leaf (Right CapitaoAmerica))
+            (Node "O herói é cego?"
+              (Leaf (Right Demolidor))
+              (Node "O herói tem habilidades com arco e flecha?"
+                (Leaf (Right GaviaoArqueiro))
+                (Node "O herói é ex-militar?"
+                  (Leaf (Right Justiceiro))
+                  (Leaf (Right Falcao))
+                )
+              )
+            )
+          )
+        )
+        --Nao
+        (Node "O herói é um Deus ou semi-Deus?"
+          (Node "O herói é um Deus Nórdico?"
+            (Leaf (Right Thor))
+            (Leaf (Right Hercules))
+          )
+          (Node "O herói é uma IA?"
+            (Leaf (Right Visao))
+            (Node "O herói é Um mutante?"
+              (Leaf (Right Wolverine))
+              (Node "O herói é Um Hibrido?"
+                (Leaf (Right Blaide))
+                (Node "O herói é Um Alienigina?"
+                  (Leaf (Right Quasar))
+                  (Node "O herói é Uma árvore?"
+                    (Leaf (Right Groot))
+                    (Leaf (Right RocketRaccoon))
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+
+  -- responder folha do nao
 
 
     -- Exemplo de código
