@@ -37,8 +37,8 @@ Escopo de heróis do jogo:
 | Caçador de Marte | <img src="./img/cacadorMarte.jpg" alt="Caçador de Marte" width="250"/> |
 | Canário Negro | <img src="./img/canarioNegro.jpg" alt="Canario Negro" width="250"/> |
 | Cyborg | <img src="./img/Cyborg.jpg" alt="Cyborg" width="250"/>|
-| Demolidor | <img src="./img/demolidor.jpg" alt="Demolidor" width="250"/>|
 | Dr. Destino | <img src="./img/Drdestino.jpg" alt="Dr. Destino" width="250"/> |
+| Dr. Meia Noite | <img src="./img/DrMeiaNoite.jpg" alt="Dr. Meia Noite" width="250"/>|
 | Flash | <img src="./img/flash.jpg" alt="flash" width="250"/>  |
 | Homem Elástico | <img src="./img/homemElastico.jpg" alt="homemElastico" width="250"/> |
 | Lanterna Verde | <img src="./img/lanternaVerde.jpg" alt="Lanterna Verde" width="250"/>|
