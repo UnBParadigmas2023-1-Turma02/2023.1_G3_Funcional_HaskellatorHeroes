@@ -29,25 +29,25 @@ Além disso, Haskellator Heroes é uma ótima maneira de aprender sobre programa
 Não espere mais, jogue Haskellator Heroes hoje mesmo e desafie-se a adivinhar o herói fictício com o menor número possível de perguntas. Divirta-se enquanto aprende sobre programação funcional e teste seus conhecimentos sobre seus heróis favoritos. Jogue agora e seja um verdadeiro herói do Haskellator Heroes!
 Escopo de heróis do jogo:
 
-| Herói | Foto |
+| Herói | Imagem |
 | :-: | :-: |
-| Arqueiro Verde | |
-| Batgirl | |
-| Batman | |
-| Caçador de Marte | |
-| Canário Negro | |
-| Ciborgue | |
-| Demolidor | |
-| Dr. Destino | |
-| Flash |  |
-| Homem Elástico | |
-| Lanterna Verde | |
-| Mulher-Maravilha | |
-| Nuclear | |
-| Pacificador | |
-| Super Choque | |
-| Superman | |
-| Zatanna | |
+| Arqueiro Verde | <img src="./img/arqueiroverde.jpg" alt="Arqueiro" width="250"/> |
+| Batgirl | <img src="./img/batgirl_2.jpg" alt="Batgirl" width="250"/> |
+| Batman | <img src="./img/Batman.png" alt="Batman" width="250"/> |
+| Caçador de Marte | <img src="./img/cacadorMarte.jpg" alt="Caçador de Marte" width="250"/> |
+| Canário Negro | <img src="./img/canarioNegro.jpg" alt="Canario Negro" width="250"/> |
+| Cyborg | <img src="./img/Cyborg.jpg" alt="Cyborg" width="250"/>|
+| Demolidor | <img src="./img/demolidor.jpg" alt="Demolidor" width="250"/>|
+| Dr. Destino | <img src="./img/Drdestino.jpg" alt="Dr. Destino" width="250"/> |
+| Flash | <img src="./img/flash.jpg" alt="flash" width="250"/>  |
+| Homem Elástico | <img src="./img/homemElastico.jpg" alt="homemElastico" width="250"/> |
+| Lanterna Verde | <img src="./img/lanternaVerde.jpg" alt="Lanterna Verde" width="250"/>|
+| Mulher-Maravilha | <img src="./img/mulherMaravilha.jpg" alt="Mulher Maravilha" width="250"/>|
+| Nuclear | <img src="./img/nuclear.jpg" alt="Nuclear" width="250"/>|
+| Pacificador | <img src="./img/pacificador.jpg" alt="Pacificador" width="250"/> |
+| Super Choque | <img src="./img/superChoque.png" alt="Super Choque" width="250"/> |
+| Superman | <img src="./img/Superman.png" alt="Superman" width="250"/> |
+| Zatanna | <img src="./img/zattana.png" alt="Zattana" width="250"/> |
 
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
