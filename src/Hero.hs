@@ -2,7 +2,7 @@
 module Hero where
 
 -- | Heróis presentes no jogo (Heróis exemplo)
-data Hero = Batman | Superman | MulherMaravilha | Flash | Aquaman | LanternaVerde | CacadorDeMarte | MulherGaviao | Cyborg | CanarioNegro
+data Hero = Batman | Superman | MulherMaravilha | Flash | Aquaman | LanternaVerde | CacadorDeMarte | MulherGaviao | Cyborg | CanarioNegro | Batgirl | Zattana | Ciborgue
   deriving (Show, Eq)
 
 data Characteristic = Voa | SuperForça | Arma | Teleporte | Rapido | FalaComAnimais | RespiraDebaixoDagua | SuperSentidos | FatorDeCura | SuperInteligencia
