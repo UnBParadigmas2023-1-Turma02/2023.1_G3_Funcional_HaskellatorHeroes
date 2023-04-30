@@ -8,16 +8,44 @@ data Tree a = Leaf a | Node String (Tree a) (Tree a)
 
 -- | Constrói a árvore com as perguntas e heróis
 tree :: Tree (Either String Hero)
-tree = 
-    -- Exemplo de árvore de decisão APENAS UM EXEMPLO
-    Node "O herói que você está pensando consegue voar?" 
-    (Node "O herói que você está pensando é um alienígena?" 
-      (Leaf (Right Superman))
-      (Node "O herói que você está pensando tem um laço mágico?" 
+tree =
+  Node "O herói que você está pensando é da DC?"
+  (Node "O herói é do gênero feminino?"
+    (Node "O herói é da raça humana?"
+      (Node "O herói é filha do comissário de Gotham?"
+        (Leaf (Right Batgirl))
+        (Leaf (Right CanarioNegro))
+      )
+      (Node "O herói é um Deus ou semi-Deus?"
         (Leaf (Right MulherMaravilha))
-        (Leaf (Right MulherGaviao))))
-    (Node "O herói que você está pensando é humano?" 
-      (Node "O herói que você está pensando usa armas?" 
+        (Leaf (Right Zattana))
+      )
+    )
+    (Node "O herói é um Deus, semi-Deus ou extraterrestre?"
+      (Node "O herói é de Krypton?"
+        (Leaf (Right Superman))
+        (Leaf (Right CacadorDeMarte))
+      )
+      (Node "O herói é uma IA?"
+        (Leaf (Right Ciborgue))
+        (Node "O herói é um mutante?"
+          (Node "O herói usa um anel de poder?"
+            (Leaf (Right LanternaVerde))
+            -- continuar a árvore aqui
+            (Leaf (Left "Não sei"))
+          )
+          -- continuar a arvore aqui
+          (Leaf (Left "Não sei"))
+        )
+      )
+    )
+  )
+  (Leaf (Left "Desculpe, não consegui identificar o herói que você está pensando"))
+
+
+    -- Exemplo de código
+   {--(Node "O herói que você está pensando é humano?" 
+      (Node  "O herói que você está pensando usa armas?" 
         (Leaf (Right Batman))
         (Node "O herói que você está pensando é ciborgue?" 
           (Leaf (Right Cyborg))
@@ -30,7 +58,7 @@ tree =
             (Leaf (Right LanternaVerde))))
         (Node "O herói que você está pensando é um atlante?" 
           (Leaf (Right Aquaman))
-          (Leaf (Left "Desculpe, não consegui identificar o herói que você está pensando.")))))
+          (Leaf (Left "Desculpe, não consegui identificar o herói que você está pensando.")))))   -}
 
 -- | Executa o jogo e retorna o herói escolhido pelo usuário
 runGame :: Tree (Either String Hero) -> IO Hero
@@ -46,4 +74,3 @@ runGame (Node question left right) = do
   if answer == "sim"
     then runGame left
     else runGame right
-
