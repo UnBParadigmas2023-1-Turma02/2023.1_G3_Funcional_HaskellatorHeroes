@@ -6,6 +6,8 @@ import Hero
 data Tree a = Leaf a | Node String (Tree a) (Tree a)
   deriving (Show)
 
+data State = State { choice :: Maybe Bool, question :: String, finished :: Bool }
+
 -- | Constrói a árvore com as perguntas e heróis
 tree :: Tree (Either String Hero)
 tree =
@@ -81,16 +83,22 @@ tree =
           (Leaf (Left "Desculpe, não consegui identificar o herói que você está pensando.")))))   -}
 
 -- | Executa o jogo e retorna o herói escolhido pelo usuário
-runGame :: Tree (Either String Hero) -> IO Hero
-runGame (Leaf (Left message)) = do
+runGame :: Tree (Either String Hero ) -> Maybe String -> IO Hero
+runGame (Leaf (Left message)) answer = do
   putStrLn message
-  runGame tree
-runGame (Leaf (Right hero)) = do
+  runGame tree ""
+runGame (Leaf (Right hero)) answer = do
   -- | putStrLn ("O herói em que você está pensando é " ++ show hero ++ ".")
-  return hero
-runGame (Node question left right) = do
-  putStrLn question
-  answer <- getLine
+  return hero ""
+runGame (Node question left right) answer = do
+  escreveArquivo question
+  setQuestion State { choice = Nothing, question = question, finished = False }
+  answer <- pegaRespostaSeTiver3char
   if answer == "sim"
-    then runGame left
-    else runGame right
+    then runGame left ""
+    else runGame right ""
+
+pegaRespostaSeTiver3char 
+  - abre arquivo e ve se tem 3 char
+  - se nao tiver chama pegaRespostaSeTiver3char depois de 1 segundo
+  - se tiver escreve a pergunta
