@@ -47,7 +47,7 @@ tree =
             )
             -- continuar a arvore aqui
             (Node "O herói é um lutador cego?"
-              (Leaf (Right Demolidor))
+              (Leaf (Right DrMeiaNoite))
               (Node "O herói é um arqueiro?"
                 (Leaf (Right ArqueiroVerde))
                 (Node "O herói é um mestre em combate corpo a corpo?"
