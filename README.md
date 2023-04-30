@@ -1,4 +1,4 @@
-# NomeDoProjeto
+# Haskellator Heroes
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T02 <br>
 **Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: 03<br>
@@ -81,7 +81,15 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Fulano  |  Programação dos Fatos da Base de Conhecimento Lógica | Boa |
+| Adrian Soares Lopes | TBC | TBC |
+| Bianca Sofia Brasil de Oliveira | TBC | TBC |
+| Daniel Vinicius Ribeiro Alves | TBC | TBC |
+| Daniela Soares de Oliveira | TBC | TBC |
+| Eduardo Maia Rezende | TBC | TBC |
+| Erick Melo Vidal de Oliveira | TBC | TBC |
+| João Victor Max Bisinotti de Oliveira | TBC | TBC |
+| Klyssmann Henrique Ferreira de Oliveira | TBC | TBC |
+| Vitor Eduardo Kühl Rodrigues | TBC | TBC |
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
