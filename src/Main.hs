@@ -6,7 +6,7 @@ import Tree
 
 main :: IO ()
 main = do
-  putStrLn "Pense em um herói da Liga da Justiça e responda as perguntas abaixo:"
+  putStrLn "Pense em um herói da Marvel ou DC e responda as perguntas abaixo:"
   hero <- runGame tree
   case hero of
     InvalidAnswer -> putStrLn "A sua resposta foi inválida, por favor, responda com 'sim' ou 'não'"
