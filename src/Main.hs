@@ -8,4 +8,6 @@ main :: IO ()
 main = do
   putStrLn "Pense em um herói da Liga da Justiça e responda as perguntas abaixo:"
   hero <- runGame tree
-  putStrLn ("O herói em que você está pensando é: " ++ show hero ++ ".")
+  case hero of
+    InvalidAnswer -> putStrLn "A sua resposta foi inválida, por favor, responda com 'sim' ou 'não'"
+    _             -> putStrLn ("O herói em que você está pensando é: " ++ show hero ++ ".")

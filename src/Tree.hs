@@ -153,6 +153,7 @@ runGame (Leaf (Right hero)) = do
 runGame (Node question left right) = do
   putStrLn question
   answer <- getLine
-  if answer == "sim"
-    then runGame left
-    else runGame right
+  case answer of
+    "sim" -> runGame left
+    "não" -> runGame right
+    _     -> return InvalidAnswer
