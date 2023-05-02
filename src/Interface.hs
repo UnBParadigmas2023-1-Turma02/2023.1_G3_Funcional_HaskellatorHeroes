@@ -4,7 +4,7 @@ import Graphics.Gloss
 import Graphics.Gloss.Data.Bitmap
 import Graphics.Gloss.Interface.IO.Game
 import Hero
-import Tree (Tree(..), parseTree, tree)
+import Tree (Tree(..), parseTree, tree, firstQuestion)
 
 data State = State {choice :: String, question :: String, finished :: Bool, herotree :: Tree (Either String Hero)}
 
@@ -27,7 +27,7 @@ setQuestion state qt = state {question = qt}
 -- getState =
 
 initialState :: State
-initialState = State {choice = "", question = "O seu personagem consegue ler mentes?", finished = False, herotree = tree}
+initialState = State {choice = "", question = firstQuestion, finished = False, herotree = tree}
 
 draw :: Picture -> State -> IO Picture
 draw backgroundImage state = do
@@ -102,6 +102,16 @@ distX (x1, _) (x2, _) = abs (x1 - x2)
 distY :: Point -> Point -> Float
 distY (_, y1) (_, y2) = abs (y1 - y2)
 
+checkYesArea :: (Float, Float) -> Bool
+checkYesArea (x, y) = checkButtonArea (x, y) yesButtonPos getHeightButton getWidithButton
+
+checkNoArea :: (Float, Float) -> Bool
+checkNoArea (x, y) = checkButtonArea (x, y) noButtonPos getHeightButton getWidithButton
+
+checkButtonArea :: Point -> Point -> Float -> Float -> Bool
+checkButtonArea coord fixed height width = 
+  distY coord fixed < (height / 2) && distX coord fixed < (width / 2)
+
 handleEvent :: Event -> State -> IO State
 -- handleEvent (EventKey (MouseButton LeftButton) Down _ (x, y)) state = do
 --   let yesButton = (0, getInitialPosition)
@@ -118,18 +128,23 @@ handleEvent :: Event -> State -> IO State
 --     else return $ changeQuestion choice state
 -- handleEvent _ state = return state
 
-handleEvent (EventKey (MouseButton LeftButton) Down _ (x, y)) gamestate =
-  let yesButton = (0, getInitialPosition)
-      noButton = (0, getInitialPosition - 70)
-      finishedState = finished gamestate
+handleEvent (EventKey (MouseButton LeftButton) Down _ (x, y)) gamestate = do
+  let finishedState = finished gamestate
       questionState = question gamestate
-      tree = herotree gamestate
-      choice = if (x, y) == yesButtonPos then "sim" else "não"
-      newTree = parseTree choice tree 
-   in do
-        case newTree of
-          (Right (Node str left rgt)) -> return gamestate {herotree = Node str left rgt, question = str}
-          (Left hr) -> return gamestate {finished = True, question = show hr}
+      tree          = herotree gamestate
+      clickChoice
+        | checkYesArea (x, y) = "sim" 
+        | checkNoArea  (x, y) = "não"
+        | otherwise           = ""
+      newTree
+        | not (null clickChoice) = parseTree clickChoice tree 
+        | otherwise              = Right tree
+    in 
+      case newTree of
+        (Right (Node str left rgt)) -> return gamestate {herotree = Node str left rgt, question = str}
+        (Right (Leaf (Right hero))) -> return gamestate {finished = True, herotree = tree, question = show hero}
+        (Left hr)                   -> return gamestate {finished = True, question = show hr}
+
 handleEvent _ state = return state
 
 update :: Float -> State -> IO State

@@ -7,6 +7,9 @@ import Hero (Hero(InvalidAnswer))
 data Tree a = Leaf a | Node String (Tree a) (Tree a)
   deriving (Show)
 
+firstQuestion :: String
+firstQuestion = "O herói que você está pensando é da DC?"
+
 -- | Constrói a árvore com as perguntas e heróis
 tree :: Tree (Either String Hero)
 tree =
