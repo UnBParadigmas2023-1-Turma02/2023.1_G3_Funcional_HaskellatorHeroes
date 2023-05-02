@@ -143,23 +143,25 @@ tree =
           (Leaf (Right Aquaman))
           (Leaf (Left "Desculpe, não consegui identificar o herói que você está pensando.")))))   -}
 
--- | Executa o jogo e retorna o herói escolhido pelo usuário
-runGame :: Tree (Either String Hero ) -> Maybe String -> IO Hero
-runGame (Leaf (Left message)) answer = do
-  putStrLn message
-  runGame tree ""
-runGame (Leaf (Right hero)) answer = do
-  -- | putStrLn ("O herói em que você está pensando é " ++ show hero ++ ".")
-  return hero ""
-runGame (Node question left right) answer = do
-  escreveArquivo question
-  setQuestion State { choice = Nothing, question = question, finished = False }
-  answer <- pegaRespostaSeTiver3char
-  if answer == "sim"
-    then runGame left ""
-    else runGame right ""
+parseTree :: String -> Tree (Either String Hero) -> Either Hero (Tree (Either String Hero))
+parseTree _ (Leaf (Right hr)) = Left hr
+parseTree ans (Node _ lftree rgtree) = case ans of
+  "sim" -> Right lftree
+  "não" -> Right rgtree
+  _     -> Left InvalidAnswer
 
-pegaRespostaSeTiver3char 
-  - abre arquivo e ve se tem 3 char
-  - se nao tiver chama pegaRespostaSeTiver3char depois de 1 segundo
-  - se tiver escreve a pergunta
+-- | Executa o jogo e retorna o herói escolhido pelo usuário
+runGame :: Tree (Either String Hero) -> IO Hero
+runGame (Leaf (Left message)) = do
+  putStrLn message
+  runGame tree
+runGame (Leaf (Right hero)) = do
+  -- | putStrLn ("O herói em que você está pensando é " ++ show hero ++ ".")
+  return hero
+runGame (Node question left right) = do
+  putStrLn question
+  answer <- getLine
+  case answer of
+    "sim" -> runGame left
+    "não" -> runGame right
+    _     -> return InvalidAnswer
