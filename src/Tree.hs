@@ -2,11 +2,10 @@
 module Tree where
 
 import Hero
+import Hero (Hero(InvalidAnswer))
 
 data Tree a = Leaf a | Node String (Tree a) (Tree a)
   deriving (Show)
-
-data State = State { choice :: Maybe Bool, question :: String, finished :: Bool }
 
 -- | Constrói a árvore com as perguntas e heróis
 tree :: Tree (Either String Hero)
