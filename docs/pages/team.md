@@ -2,7 +2,7 @@
 
 
 | Matrícula  | Aluno   | Github  |
-| -- | -- |
+| -- | -- | -- |
 | Adrian Soares Lopes | 160000572 | 
 | Bianca Sofia Brasil de Oliveira | 190025298 |[biancasofia](https://github.com/biancasofia) |
 | Daniel Vinicius Ribeiro Alves | 190026375 | [DanielViniciusAlves](https://github.com/DanielViniciusAlves)|
