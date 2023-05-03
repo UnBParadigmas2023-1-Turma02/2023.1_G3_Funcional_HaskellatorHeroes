@@ -107,7 +107,7 @@ tree =
             (Node "O herói é Um mutante?"
               (Leaf (Right Wolverine))
               (Node "O herói é Um Hibrido?"
-                (Leaf (Right Blaide))
+                (Leaf (Right Blade))
                 (Node "O herói é Um Alienigina?"
                   (Leaf (Right Quasar))
                   (Node "O herói é Uma árvore?"
