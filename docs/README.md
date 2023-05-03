@@ -10,4 +10,4 @@ Com uma interface amigável e fácil de usar, Haskellator Heroes é adequado par
 
 Além disso, Haskellator Heroes é uma ótima maneira de aprender sobre programação funcional em Haskell. O jogo é projetado para apresentar conceitos de programação, como árvores binárias de decisão, de uma maneira divertida e interativa. Com Haskellator Heroes, você pode aprender enquanto se diverte!
 
-Não espere mais, jogue Haskellator Heroes hoje mesmo e desafie-se a adivinhar o herói fictício com o menor número possível de perguntas. Divirta-se enquanto aprende sobre programação funcional e teste seus conhecimentos sobre seus heróis favoritos. Jogue agora e seja um verdadeiro herói do Haskellator Heroes! Escopo de heróis do jogo:
+Não espere mais, jogue Haskellator Heroes hoje mesmo e desafie-se a adivinhar o herói fictício com o menor número possível de perguntas. Divirta-se enquanto aprende sobre programação funcional e teste seus conhecimentos sobre seus heróis favoritos. Jogue agora e seja um verdadeiro herói do Haskellator Heroes!
