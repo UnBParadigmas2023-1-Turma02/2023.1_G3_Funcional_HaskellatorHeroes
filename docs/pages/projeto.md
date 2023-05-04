@@ -31,7 +31,7 @@ O módulo Tree define uma estrutura de dados de árvore (Tree), que é usada par
 
 O tipo de dados Tree é parametrizado com um tipo a, o que significa que a árvore pode conter qualquer tipo de valor, desde que esse tipo implemente a interface do tipo de dados Tree. No caso do jogo de adivinhação de heróis, a árvore contém valores do tipo Either String Hero, que representa uma resposta ou uma pergunta.
 
-O módulo Tree importa o módulo Hero, que define os tipos de dados Hero e Characteristic, que são usados para representar os heróis e suas características. A árvore é construída manualmente, usando os construtores de dados Node e Leaf, e contém uma série de perguntas que são usadas para adivinhar qual herói o jogador está pensando.
+O módulo Tree importa o módulo Hero, que define o tipo de dado Hero, que é usado para representar os heróis. A árvore é construída manualmente, usando os construtores de dados Node e Leaf, e contém uma série de perguntas que são usadas para adivinhar qual herói o jogador está pensando.
 
 A construção da árvore é baseada na ideia de divisão e conquista, onde cada pergunta é usada para dividir o conjunto de possíveis heróis em duas sub-árvores, cada uma contendo um subconjunto de heróis que atendem à resposta para a pergunta. As perguntas são organizadas de tal forma que as que possuem maior poder de discriminação são colocadas no topo da árvore. Isso significa que as perguntas que dividem o conjunto de heróis em duas partes mais desiguais são colocadas em nós mais altos da árvore, enquanto as perguntas que têm menos poder de discriminação são colocadas em nós mais baixos da árvore.
 </div>
