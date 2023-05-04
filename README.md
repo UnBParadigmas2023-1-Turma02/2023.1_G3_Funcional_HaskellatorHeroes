@@ -33,16 +33,21 @@ Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcioname
 
 ## Instalação 
 **Linguagens**: Haskell<br>
-**Tecnologias**: xxxxxx<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
-Gifs animados e outras ilustrações são bem-vindos!
+**Tecnologias**: Cabal 2.4, Gloss<br>
 
-## Uso 
-O software é bem intuitivo! Basta você iniciar o arquivo executável e escolher um personagem dentro do escopo do jogo (os personagens estão em fotos no fundo da tela e com mais detalhes na wiki). Feito isso, basta responder as perguntas escolhando "sim" para as características que combinam com o personagem escolhido e "não" para as que não combinam. Ao final de uma série de perguntas, o jogo irá te dizer qual personagem você pensou. Simples e prático!
+## Pré Requisitos
+Instalação do Haskell
 
 ```bash
-    ghc -main-is Main.main -o jogo Hero.hs Tree.hs Main.hs
+sudo apt-get install haskell-platform
+```
+
+## Uso 
+O software é bem intuitivo! Basta você iniciar buildar o projeto com o cabal e rodar utilizando os comandos abaixo, em seguida deve escolher um personagem dentro do escopo do jogo (os personagens estão em fotos no fundo da tela e com mais detalhes na wiki). Feito isso, basta responder as perguntas escolhando "sim" para as características que combinam com o personagem escolhido e "não" para as que não combinam. Ao final de uma série de perguntas, o jogo irá te dizer qual personagem você pensou. Simples e prático!
+
+```bash
+cabal build
+cabal run
 ```
 
 ## Vídeo
