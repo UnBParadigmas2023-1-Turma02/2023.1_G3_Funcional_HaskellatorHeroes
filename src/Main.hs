@@ -10,5 +10,4 @@ main :: IO ()
 main = do
   let window = InWindow "Heroes" (600, 400) (0, 0)
       initialPosition = -20
-  backgroundImage <- loadBMP "./bmp/picture.bmp"
-  playIO window white 30 initialState (draw backgroundImage) handleEvent update
+  playIO window white 30 initialState draw handleEvent update
