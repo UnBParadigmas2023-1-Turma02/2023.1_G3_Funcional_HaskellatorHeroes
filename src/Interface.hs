@@ -140,7 +140,7 @@ handleEvent (EventKey (MouseButton LeftButton) Down _ (x, y)) gamestate = do
         tree          = herotree gamestate
         clickChoice
           | checkYesArea (x, y) = "sim" 
-          | checkNoArea  (x, y) = "não"
+          | checkNoArea  (x, y) = "nao"
           | otherwise           = ""
         newTree
           | not (null clickChoice) = parseTree clickChoice tree 
