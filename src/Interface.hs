@@ -4,7 +4,8 @@ import Graphics.Gloss
 import Graphics.Gloss.Data.Bitmap
 import Graphics.Gloss.Interface.IO.Game
 import Hero
-import Tree (Tree(..), parseTree, tree, firstQuestion)
+import HeroInstance
+import Tree (Tree (..), firstQuestion, parseTree, tree)
 
 data State = State {choice :: String, question :: String, finished :: Bool, herotree :: Tree (Either String Hero), backGroundState :: String}
 
@@ -110,7 +111,7 @@ checkStartArea :: (Float, Float) -> Bool
 checkStartArea (x, y) = checkButtonArea (x, y) yesButtonPos getHeightButton 170
 
 checkButtonArea :: Point -> Point -> Float -> Float -> Bool
-checkButtonArea coord fixed height width = 
+checkButtonArea coord fixed height width =
   distY coord fixed < (height / 2) && distX coord fixed < (width / 2)
 
 handleEvent :: Event -> State -> IO State
@@ -149,6 +150,7 @@ handleEvent (EventKey (MouseButton LeftButton) Down _ (x, y)) gamestate = do
           (Right (Node str left rgt)) -> return gamestate {herotree = Node str left rgt, question = str}
           (Right (Leaf (Right hero))) -> return gamestate {finished = True, herotree = tree, question = show hero}
           (Left hr)                   -> return gamestate {finished = True, question = show hr}
+
 handleEvent _ state = return state
 
 update :: Float -> State -> IO State
