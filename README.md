@@ -58,7 +58,7 @@ TEMPO: +/- 15min
 ## Participações
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
-| -- | -- | -- |
+| -- | -- | :-: |
 | Adrian Soares Lopes | Frontend, estrutura da árvore e organização repositório | Excelente |
 | Bianca Sofia Brasil de Oliveira | Backend, estrutura da árvore e organização repositório | Excelente |
 | Daniel Vinicius Ribeiro Alves | Frontend e organização do repositório | Excelente |
