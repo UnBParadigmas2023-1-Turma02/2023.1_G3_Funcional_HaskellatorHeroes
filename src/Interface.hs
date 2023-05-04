@@ -19,6 +19,12 @@ getWidithButton = 150
 getHeightButton :: Float
 getHeightButton = 50
 
+restartButtonWidth :: Float
+restartButtonWidth = 170.0
+
+restartButtonHeight :: Float
+restartButtonHeight = 50.0
+
 setQuestion :: State -> String -> State
 setQuestion state qt = state {question = qt}
 
@@ -29,6 +35,15 @@ backGround2 = bmpPath ++ "background2.bmp"
 initialState :: State
 initialState = State {choice = "", question = firstQuestion, finished = False, herotree = tree, backGroundState = "./bmp/background1.bmp"}
 
+yesButtonPos :: (Float, Float)
+yesButtonPos = (0, getInitialPosition)
+
+noButtonPos :: (Float, Float)
+noButtonPos = (0, getInitialPosition - 70)
+
+restartButtonPos :: (Float ,Float)
+restartButtonPos = (0, getInitialPosition - 70)
+
 draw :: State -> IO Picture
 draw state = do
   let widthButton = 150
@@ -37,20 +52,14 @@ draw state = do
     "./bmp/background1.bmp" -> do
       let buttonToShow = roundedButton "Iniciar" green (0, getInitialPosition) 170 50
       return $ Pictures [backgroundImage, buttonToShow]
-    "./bmp/background2.bmp"-> do
+    "./bmp/background2.bmp" -> do
       let buttonToShow = Pictures[ roundedButton "Sim" (light green) (0, getInitialPosition) widthButton 50, roundedButton "Nao" (dim red) (0, getInitialPosition - 70) widthButton 50]
           questionSpace = roundedTextfield (question state) cyan (0, getInitialPosition + 185) 250 110
       return $ Pictures [backgroundImage, buttonToShow, questionSpace]
     _ -> do
-      let buttonToShow = roundedButton "Reiniciar" yellow (0, getInitialPosition - 110) 170 50
+      let buttonToShow = roundedButton "Reiniciar" yellow restartButtonPos restartButtonWidth restartButtonHeight
           questionSpace = roundedTextfield (question state) white (100, getInitialPosition + 185) 250 110
       return $ Pictures [backgroundImage, buttonToShow, questionSpace]
-    
-yesButtonPos :: (Float, Float)
-yesButtonPos = (0, getInitialPosition)
-
-noButtonPos :: (Float, Float)
-noButtonPos = (0, getInitialPosition - 70)
 
 drawTextfield :: String -> State -> IO Picture
 drawTextfield text state = do
@@ -105,13 +114,19 @@ distY :: Point -> Point -> Float
 distY (_, y1) (_, y2) = abs (y1 - y2)
 
 checkYesArea :: (Float, Float) -> Bool
-checkYesArea (x, y) = checkButtonArea (x, y) yesButtonPos getHeightButton getWidithButton
+checkYesArea (x, y) = checkButtonArea
+  (x, y) yesButtonPos getHeightButton getWidithButton
 
 checkNoArea :: (Float, Float) -> Bool
-checkNoArea (x, y) = checkButtonArea (x, y) noButtonPos getHeightButton getWidithButton
+checkNoArea (x, y) = checkButtonArea 
+  (x, y) noButtonPos getHeightButton getWidithButton
 
 checkStartArea :: (Float, Float) -> Bool
 checkStartArea (x, y) = checkButtonArea (x, y) yesButtonPos getHeightButton 170
+
+checkRestartArea :: (Float, Float) -> Bool
+checkRestartArea (x, y) = checkButtonArea 
+  (x, y) restartButtonPos restartButtonHeight restartButtonWidth 
 
 checkButtonArea :: Point -> Point -> Float -> Float -> Bool
 checkButtonArea coord fixed height width =
@@ -137,7 +152,7 @@ handleEvent (EventKey (MouseButton LeftButton) Down _ (x, y)) gamestate = do
   if backGroundState gamestate == "./bmp/background1.bmp" && checkStartArea (x, y)
   then return gamestate {backGroundState = "./bmp/background2.bmp"}
   else 
-    if finished gamestate && checkStartArea (x, y) 
+    if finished gamestate && checkRestartArea (x, y) 
     then return initialState
     else
       let questionState = question gamestate
@@ -151,7 +166,9 @@ handleEvent (EventKey (MouseButton LeftButton) Down _ (x, y)) gamestate = do
             | otherwise              = Right tree
       in 
         case newTree of
-          (Right (Node str left rgt)) -> return gamestate {herotree = Node str left rgt, question = str}
+          (Right (Node str left rgt)) -> return gamestate {
+            herotree = Node str left rgt, question = str
+          }
           (Right (Leaf (Right hero))) -> return gamestate {
             finished = True,
             herotree = tree,
