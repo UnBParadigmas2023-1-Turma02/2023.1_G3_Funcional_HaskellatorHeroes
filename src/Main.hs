@@ -1,13 +1,13 @@
--- Módulo Main
 module Main where
 
-import Hero
-import Tree
+import Graphics.Gloss
+import Graphics.Gloss.Data.Bitmap
+import Graphics.Gloss.Interface.IO.Game
+
+import Interface
 
 main :: IO ()
 main = do
-  putStrLn "Pense em um herói da Marvel ou DC e responda as perguntas abaixo:"
-  hero <- runGame tree
-  case hero of
-    InvalidAnswer -> putStrLn "A sua resposta foi inválida, por favor, responda com 'sim' ou 'não'"
-    _             -> putStrLn ("O herói em que você está pensando é: " ++ show hero ++ ".")
+  let window = InWindow "Heroes" (600, 400) (0, 0)
+      initialPosition = -20
+  playIO window white 30 initialState draw handleEvent update
