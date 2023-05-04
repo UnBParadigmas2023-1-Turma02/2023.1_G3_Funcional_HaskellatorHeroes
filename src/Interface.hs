@@ -6,6 +6,7 @@ import Graphics.Gloss.Interface.IO.Game
 import Hero
 import HeroInstance
 import Tree (Tree (..), firstQuestion, parseTree, tree)
+import System.FilePath (pathSeparator)
 
 data State = State {choice :: String, question :: String, finished :: Bool, herotree :: Tree (Either String Hero), backGroundState :: String}
 
@@ -21,6 +22,10 @@ getHeightButton = 50
 setQuestion :: State -> String -> State
 setQuestion state qt = state {question = qt}
 
+bmpPath = "." ++ [pathSeparator] ++ "bmp" ++ [pathSeparator]
+backGround1 = bmpPath ++ "background1.bmp"
+backGround2 = bmpPath ++ "background2.bmp"
+
 initialState :: State
 initialState = State {choice = "", question = firstQuestion, finished = False, herotree = tree, backGroundState = "./bmp/background1.bmp"}
 
@@ -28,21 +33,19 @@ draw :: State -> IO Picture
 draw state = do
   let widthButton = 150
   backgroundImage <- loadBMP (backGroundState state)
-  if not (finished state)
-    then
-      case backGroundState state of
-        ("./bmp/background1.bmp") -> do
-          let buttonToShow = roundedButton "Iniciar" green (0, getInitialPosition) 170 50
-          return $ Pictures [backgroundImage, buttonToShow]
-        ("./bmp/background2.bmp") -> do
-          let buttonToShow = Pictures[ roundedButton "Sim" (light green) (0, getInitialPosition) widthButton 50, roundedButton "Nao" (dim red) (0, getInitialPosition - 70) widthButton 50]
-              questionSpace = roundedTextfield (question state) cyan (0, getInitialPosition + 185) 250 110
-          return $ Pictures [backgroundImage, buttonToShow, questionSpace]
-    else do
-      let buttonToShow = roundedButton "Reiniciar" yellow (0, getInitialPosition) 170 50
+  case backGroundState state of
+    "./bmp/background1.bmp" -> do
+      let buttonToShow = roundedButton "Iniciar" green (0, getInitialPosition) 170 50
+      return $ Pictures [backgroundImage, buttonToShow]
+    "./bmp/background2.bmp"-> do
+      let buttonToShow = Pictures[ roundedButton "Sim" (light green) (0, getInitialPosition) widthButton 50, roundedButton "Nao" (dim red) (0, getInitialPosition - 70) widthButton 50]
           questionSpace = roundedTextfield (question state) cyan (0, getInitialPosition + 185) 250 110
       return $ Pictures [backgroundImage, buttonToShow, questionSpace]
-      
+    _ -> do
+      let buttonToShow = roundedButton "Reiniciar" yellow (0, getInitialPosition - 110) 170 50
+          questionSpace = roundedTextfield (question state) white (100, getInitialPosition + 185) 250 110
+      return $ Pictures [backgroundImage, buttonToShow, questionSpace]
+    
 yesButtonPos :: (Float, Float)
 yesButtonPos = (0, getInitialPosition)
 
@@ -132,23 +135,29 @@ handleEvent :: Event -> State -> IO State
 
 handleEvent (EventKey (MouseButton LeftButton) Down _ (x, y)) gamestate = do
   if backGroundState gamestate == "./bmp/background1.bmp" && checkStartArea (x, y)
-    then
-      return gamestate {backGroundState = "./bmp/background2.bmp"}
-  else
-    let finishedState = finished gamestate
-        questionState = question gamestate
-        tree          = herotree gamestate
-        clickChoice
-          | checkYesArea (x, y) = "sim" 
-          | checkNoArea  (x, y) = "nao"
-          | otherwise           = ""
-        newTree
-          | not (null clickChoice) = parseTree clickChoice tree 
-          | otherwise              = Right tree
+  then return gamestate {backGroundState = "./bmp/background2.bmp"}
+  else 
+    if finished gamestate && checkStartArea (x, y) 
+    then return initialState
+    else
+      let questionState = question gamestate
+          tree          = herotree gamestate
+          clickChoice
+            | checkYesArea (x, y) = "sim" 
+            | checkNoArea  (x, y) = "nao"
+            | otherwise           = ""
+          newTree
+            | not (null clickChoice) = parseTree clickChoice tree 
+            | otherwise              = Right tree
       in 
         case newTree of
           (Right (Node str left rgt)) -> return gamestate {herotree = Node str left rgt, question = str}
-          (Right (Leaf (Right hero))) -> return gamestate {finished = True, herotree = tree, question = show hero}
+          (Right (Leaf (Right hero))) -> return gamestate {
+            finished = True,
+            herotree = tree,
+            backGroundState = getHeroImg hero,
+            question = getHeroName hero
+          }
           (Left hr)                   -> return gamestate {finished = True, question = show hr}
 
 handleEvent _ state = return state
@@ -156,22 +165,3 @@ handleEvent _ state = return state
 update :: Float -> State -> IO State
 update _ state = return state
 
-{--
-changeQuestion :: Maybe Bool -> State -> State
-changeQuestion choice state
-  | choice == Just True = runGame "sim"
-   -- state { question = fst rightTree, finished = snd rightTree }
-  | choice == Just False = state { question = fst leftTree, finished = snd leftTree }
-  | otherwise = state
-  where
-    rightTree = getRightTree
-    leftTree = getLeftTree
-
-getRightTree :: (String, Bool)
-getRightTree = ("O seu personagem eh o Superman!", True)
-
-getLeftTree :: (String, Bool)
-getLeftTree = ("O seu personagem eh o homem-aranha?", False)
-
---}
--- putStrLn $ "Choice: " ++ show choice
