@@ -30,13 +30,16 @@ A estrutura do projeto é baseada em três componentes principais: linguagem Has
 
 O módulo Hero contém duas definições de tipos de dados: Hero e Characteristic.
 
-A definição Hero é uma enumeração que lista os nomes dos personagens de super-heróis do jogo. Cada personagem é um valor do tipo Hero e tem um nome único. A definição utiliza a palavra-chave deriving para gerar automaticamente instâncias de algumas classes de tipo, incluindo Show e Eq. A instância Show permite que valores do tipo Hero sejam convertidos em strings, enquanto a instância Eq permite que valores do tipo Hero sejam comparados por igualdade.
+A definição Hero é uma enumeração que lista os nomes dos personagens de super-heróis do jogo. Cada personagem é um valor do tipo Hero e tem um nome único. A definição utiliza a palavra-chave deriving para gerar automaticamente instâncias de algumas classes de tipo, incluindo Show e Eq. A instância Show permite que valores do tipo Hero sejam convertidos em strings, enquanto a instância Eq permite que valores do tipo Hero sejam comparados por igualdade. Ele também implementa Ord pois é utilizado como chave de uma estrutura de Map mostrada mais à frente.
 
 A definição Characteristic é uma enumeração que lista as características que podem ser usadas para adivinhar o personagem em que o jogador está pensando. Cada característica é um valor do tipo Characteristic e tem um nome único. A definição também utiliza a palavra-chave deriving para gerar instâncias de Show e Eq.
 
 Ambas as definições são importantes para o jogo em si, pois os personagens de super-heróis e suas características são usados no módulo Tree para construir a árvore de perguntas e respostas.
 </div>
 
+### HeroInstance.hs
+
+<p align = "center"> <img src="assets/tecnicoheroinstance.jpeg"/> </p>
 
 ### Tree.hs
 
@@ -55,11 +58,26 @@ A construção da árvore é baseada na ideia de divisão e conquista, onde cada
 <p align = "center"> <img src="assets/tecnico.jpeg"/> </p>
 
 <div style="text-align: justify;">
-runGame é uma função que implementa a lógica do jogo de adivinhação de heróis. Ela recebe como entrada uma árvore Tree com as perguntas e respostas possíveis, e retorna o herói correspondente à sequência de perguntas e respostas dadas pelo jogador.
+runGame é uma função que implementa a lógica do jogo de adivinhação de heróis na versão CLI. Ela recebe como entrada uma árvore Tree com as perguntas e respostas possíveis, e retorna o herói correspondente à sequência de perguntas e respostas dadas pelo jogador.
 
 A função começa verificando se o nó atual é uma Leaf que contém uma mensagem de erro ou um herói. Se for uma mensagem de erro, ela imprime a mensagem na tela e chama a função runGame novamente com a árvore original tree. Se for um herói, ela retorna o herói correspondente.
 
 Caso contrário, se o nó atual for um Node com uma pergunta, a função imprime a pergunta na tela e lê a resposta do jogador usando a função getLine. Dependendo da resposta ("sim" ou "não"), a função chama runGame recursivamente com o nó à esquerda ou à direita da árvore.
 
 Se a resposta do jogador não for "sim" ou "não", a função retorna o valor InvalidAnswer, que é definido como um herói inválido no módulo Hero.
+</div>
+
+# Front-end Graphics.Gloss
+
+<div style="text-align: justify;">
+O front-end foi implementado utilizando a biblioteca Gloss do haskell. Ela é geralmente utilizada para criação de aplicações interativas e jogos. As imagens são carregadas em bitmap e existe um controle de estado da tela, que é mutado através de eventos de interação (como clicks e teclas do computados) e de funções de atualização que são mapeadas.
+
+O jogo controla o estado das alternativas selecionadas para percorrer a árvore e o estado da adivinhação para inserir os dados do herói escolhido.
+
+O arquivo Main.hs fica responsável por iniciar o loop de jogo (playIO).
+
+<p align = "center"> <img src="assets/statedrawings.jpeg"/> </p>
+
+<p align = "center"> <img src="assets/eventhandler.jpeg"/> </p>
+
 </div>
