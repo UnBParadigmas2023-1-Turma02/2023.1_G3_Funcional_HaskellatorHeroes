@@ -78,6 +78,6 @@ O arquivo Main.hs fica responsável por iniciar o loop de jogo (playIO).
 
 <p align = "center"> <img src="assets/statedrawings.jpeg"/> </p>
 
-<p align = "center"> <img src="assets/eventhandlers.jpeg"/> </p>
+<p align = "center"> <img src="assets/eventhandler.jpeg"/> </p>
 
 </div>
