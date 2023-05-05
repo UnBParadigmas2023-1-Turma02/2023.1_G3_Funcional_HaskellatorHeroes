@@ -35,7 +35,6 @@ executable src
 
     build-depends:    base ^>=4.16.1,
                       gloss,
-                      JuicyPixels,
                       filepath,
                       containers
 

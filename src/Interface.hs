@@ -42,7 +42,7 @@ noButtonPos :: (Float, Float)
 noButtonPos = (0, getInitialPosition - 70)
 
 restartButtonPos :: (Float ,Float)
-restartButtonPos = (0, getInitialPosition - 70)
+restartButtonPos = (0, getInitialPosition - 135)
 
 draw :: State -> IO Picture
 draw state = do
@@ -54,11 +54,11 @@ draw state = do
       return $ Pictures [backgroundImage, buttonToShow]
     "./bmp/background2.bmp" -> do
       let buttonToShow = Pictures[ roundedButton "Sim" (light green) (0, getInitialPosition) widthButton 50, roundedButton "Nao" (dim red) (0, getInitialPosition - 70) widthButton 50]
-          questionSpace = roundedTextfield (question state) cyan (0, getInitialPosition + 185) 250 110
+          questionSpace = roundedTextfield (question state) cyan (0, getInitialPosition + 185) 260 110
       return $ Pictures [backgroundImage, buttonToShow, questionSpace]
     _ -> do
       let buttonToShow = roundedButton "Reiniciar" yellow restartButtonPos restartButtonWidth restartButtonHeight
-          questionSpace = roundedTextfield (question state) white (100, getInitialPosition + 185) 250 110
+          questionSpace = roundedTextfield (question state) white (0, getInitialPosition - 85) 120 50
       return $ Pictures [backgroundImage, buttonToShow, questionSpace]
 
 drawTextfield :: String -> State -> IO Picture
@@ -79,7 +79,7 @@ roundedTextfield :: String -> Color -> Point -> Float -> Float -> Picture
 roundedTextfield label color (x, y) width height = do
   let test = splitInto30CharStrings label
   Pictures
-    [ Translate x (y - 25) $ Color color $ rectangleSolid width height,
+    [ Translate x y $ Color color $ rectangleSolid width height,
       createLines (tail test) color (x, y) width height (Translate (x - width / 2 + 3) (y + 3) $ Scale 0.12 0.12 $ Text (head test)) 0 (y - 20)
     ]
 
