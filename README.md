@@ -29,7 +29,11 @@ Além disso, Haskellator Heroes é uma ótima maneira de aprender sobre programa
 Não espere mais, jogue Haskellator Heroes hoje mesmo e desafie-se a adivinhar o herói fictício com o menor número possível de perguntas. Divirta-se enquanto aprende sobre programação funcional e teste seus conhecimentos sobre seus heróis favoritos. Jogue agora e seja um verdadeiro herói do Haskellator Heroes!
 
 ## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+
+![Screenshot3](/img/screenshot3.png)
+![Screenshot2](/img/screenshot2.png)
+![Screenshot4](/img/screenshot4.png)
+![Screenshot1](/img/screenshot1.jpeg)
 
 ## Instalação 
 **Linguagens**: Haskell<br>
@@ -60,14 +64,9 @@ cabal run
 ```
 
 ## Vídeo
-Adicione 1 ou mais vídeos com a execução do projeto.
-Procure: 
-(i) Introduzir o projeto;
-(ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
-(iii) Apresentar particularidades do Paradigma, da Linguagem, e das Tecnologias, e
-(iV) Apresentar lições aprendidas, contribuições, pendências, e ideias para trabalhos futuros.
-OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
-TEMPO: +/- 15min
+
+[![Assistir Video](./img/backgorund1.png)](https://unbbr.sharepoint.com/:v:/s/Minha-Prpria/EcCkYkWsS8hHriHU7FNuY10B5l01xcxWZY6-yHzbI1Ezww?e=NOIeY5)
+>Clique na imagem para assistir
 
 ## Participações
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
@@ -84,12 +83,37 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Vitor Eduardo Kühl Rodrigues | Backend e estrutura da árvore | Excelente |
 
 ## Outros 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
-(i) Lições Aprendidas;
-(ii) Percepções;
-(iii) Contribuições e Fragilidades, e
-(iV) Trabalhos Futuros.
+### Lições Aprendidas:
+
+Haskell é uma linguagem de programação funcional que requer um pensamento diferente e pode ser difícil de aprender, mas pode trazer benefícios na resolução de problemas complexos.
+Haskell oferece flexibilidade ao trabalhar com Monads e funções recursivas e é adequado para a construção de árvores e para o desenvolvimento de back-end.
+Trabalhar com um paradigma diferente do que se está acostumado pode ser desafiador, mas pode ser útil em algumas situações.
+A reunião de escolha dos heróis facilitou o desenvolvimento do diagrama e da estrutura da árvore.
+
+### Percepções:
+
+A linguagem Haskell é elegante e oferece uma notação quase matemática para a aplicação de operações com iteradores.
+A construção de árvores em Haskell é fácil em comparação com outras linguagens.
+Haskell é mais adequado para o desenvolvimento de back-end e possui poucas bibliotecas para construção de interfaces.
+A documentação da linguagem pode ser fraca.
+
+### Contribuições e Fragilidades:
+
+A equipe colaborou na elaboração das estruturas das funções e listas usadas no back-end e para a população das informações reais dos heróis.
+A falta de consulta de material sobre a linguagem pode atrasar o desenvolvimento.
+A passagem de parâmetros para as funções sem um separador pode ser um ponto fraco da linguagem.
+
+### Trabalhos Futuros:
+
+Explorar o uso de fmap e correlatos para fazer operações complexas em uma única linha de código.
+Investigar formas de melhorar a documentação da linguagem.
+Desenvolver mais bibliotecas para construção de interfaces.
+Aplicar a linguagem em outras funcionalidades, principalmente no escopo universitário.
 
 ## Fontes
-Referencie, adequadamente, as referências utilizadas.
-Indique ainda sobre fontes de leitura complementares.
+
+[Haskell Documentation](https://www.haskell.org/documentation/)<br>
+[Gloss Documentation](https://hackage.haskell.org/package/gloss)<br>
+[Wiki Liga da Justiça](https://ligadajustia.fandom.com/pt-br/wiki/Liga_da_Justi%C3%A7a)<br>
+[DC Characteres](https://www.dc.com/characters)<br>
+[Marvel Fandom](https://marvel.fandom.com/wiki/Marvel_Database)<br>
